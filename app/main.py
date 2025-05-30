@@ -13,6 +13,11 @@ def get_db():
     finally:
         db.close()
 
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
+
+
 @app.post("/users/", response_model=schemas.User)
 def create_user(db: Session = Depends(get_db)):
     user = faker_utils.create_fake_user(db)
