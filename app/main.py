@@ -14,9 +14,8 @@ def get_db():
         db.close()
 
 @app.get("/health")
-def health_check():
+def health():
     return {"status": "ok"}
-
 
 @app.post("/users/", response_model=schemas.User)
 def create_user(db: Session = Depends(get_db)):
@@ -35,3 +34,29 @@ def get_user(email: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="User not found")
     return user
 
+
+
+@app.put("/users/{email}", response_model=schemas.User)
+def update_user(email: str, updated_data: schemas.UserCreate, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.User.email == email).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    user.name = updated_data.name
+    user.email = updated_data.email
+    user.address = updated_data.address
+    user.phone = updated_data.phone
+
+    db.commit()
+    db.refresh(user)
+    return user
+
+@app.delete("/users/{email}")
+def delete_user(email: str, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.User.email == email).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    db.delete(user)
+    db.commit()
+    return {"message": f"User with email '{email}' has been deleted."}
