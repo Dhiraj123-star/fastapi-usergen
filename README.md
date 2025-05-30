@@ -11,6 +11,7 @@ A lightweight FastAPI-based service that generates and manages fake user data us
 * 📥 **Create Users**: Add new users to the SQLite database with a single API call.
 * 🔍 **Get User by Email**: Fetch user details by email address.
 * 📄 **List All Users**: Retrieve a complete list of all users stored in the database.
+* ❤️ **Health Check**: Simple endpoint to verify service uptime.
 
 ## 🛠️ Tech Stack
 
@@ -25,6 +26,7 @@ A lightweight FastAPI-based service that generates and manages fake user data us
 * `POST /users/` → Generate and save a fake user
 * `GET /users/{email}` → Retrieve user by email
 * `GET /users/all` → List all users
+* `GET /health` → Health check for API availability
 
 ## 📂 Database
 
