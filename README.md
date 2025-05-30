@@ -18,6 +18,7 @@ A lightweight FastAPI-based service that generates and manages fake user data us
 * 🐍 **SQLAlchemy** — ORM for database interaction
 * 🧪 **Faker** — generates realistic dummy data
 * 🐳 **Docker** — for containerized development
+* 🌐 **Nginx** — used as a reverse proxy for serving FastAPI
 
 ## 📦 API Endpoints
 
@@ -28,5 +29,10 @@ A lightweight FastAPI-based service that generates and manages fake user data us
 ## 📂 Database
 
 * Uses **SQLite** as a lightweight, file-based DB (`users.db`).
+
+## ⚙️ Production Setup
+
+* **Nginx** is configured to act as a reverse proxy in front of the FastAPI app for improved performance and routing.
+* The entire setup is containerized using **Docker** for consistency across environments.
 
 ---
