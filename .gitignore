@@ -52,3 +52,7 @@ env/
 # FastAPI reload files
 *.reload
 
+# SSL/TLS certificates and keys
+certs/
+*.crt
+*.key
