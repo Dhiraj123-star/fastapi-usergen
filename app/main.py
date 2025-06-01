@@ -17,6 +17,10 @@ def get_db():
 def health():
     return {"status": "ok"}
 
+@app.get("/")
+def home():
+    return {"status": "Application is working !!!"}
+
 @app.post("/users/", response_model=schemas.User)
 def create_user(db: Session = Depends(get_db)):
     user = faker_utils.create_fake_user(db)
