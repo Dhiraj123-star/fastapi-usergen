@@ -21,7 +21,9 @@ A lightweight 💡 FastAPI-based service that generates and manages fake user da
 * 🐍 **SQLAlchemy** — ORM for database interaction
 * 🧪 **Faker** — generates realistic dummy data
 * 🐳 **Docker** — for containerized development
-* 🌐 **Nginx** — reverse proxy for load balancing and HTTPS termination
+* 🌐 **Nginx** — reverse proxy with HTTPS and load balancing
+* 🔐 **SSL** — self-signed certs for HTTPS support (local testing)
+* 🔁 **GitHub Actions** — automated CI/CD pipeline to Docker Hub
 
 ## 📦 API Endpoints
 
@@ -36,10 +38,17 @@ A lightweight 💡 FastAPI-based service that generates and manages fake user da
 
 * Uses **SQLite** 🗃️ as a lightweight, file-based DB (`users.db`).
 
-## ⚙️ Production Setup
+## ⚙️ Production-Like Setup
 
-* 🔁 **Nginx** is configured with round-robin load balancing to serve the FastAPI app across multiple ports (8000, 8001, 8002).
-* 🔐 Supports HTTPS with **self-signed certificates** for local testing.
-* 🐳 Fully containerized with **Docker** for reproducible environments.
+* 🧱 **Multiple FastAPI instances** (on ports 8000, 8001, 8002) to simulate horizontal scaling.
+* 🔁 **Nginx load balancer** configured with round-robin strategy.
+* 🔐 **HTTPS** enabled using **self-signed SSL certificates** (via `/certs`).
+* 🐳 Fully containerized using **Docker Compose**.
+
+## 🚀 CI/CD with Docker Hub
+
+* Automatic build and push of Docker image on every push to `main` using **GitHub Actions**.
+* Docker image available at: [`dhiraj918106/fastapi-usergen`](https://hub.docker.com/r/dhiraj918106/fastapi-usergen)
 
 ---
+
